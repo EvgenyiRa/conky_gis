@@ -35,9 +35,9 @@ use_spacer none
 
 TEXT
 ${image ~/.conky/icons/logo.png -p 18,0 -s 45x45}${goto 74}${font Poky:pixelsize=20}r${font} ${voffset -16} Kernel: $kernel $machine
-${goto 99}Uptime: $uptime_short 
+${goto 99}Uptime: $uptime_short
 ${goto 99}Users logon: $user_number
-${voffset -6}${goto 70}${font Poky:pixelsize=22}T${font}${color 98FB98}${voffset -8} ${battery_bar 6,150 BAT0}${color}  ${battery BAT0} 
+${voffset -6}${goto 70}${font Poky:pixelsize=22}T${font}${color 98FB98}${voffset -8} ${battery_bar 6,150 BAT0}${color}  ${battery BAT0}
 ${voffset -8}
 ${goto 34}${font :style=Bold:pixelsize=12}CPU1${voffset -8} ${font Poky:pixelsize=22}P${font} ${voffset -5}${freq_g 1} GHz ${alignc}${voffset -15} ${cpugraph  cpu1 20,90 FFF6CD AC0F1C -t}
 ${voffset -20}${goto 246}${font :style=Bold:pixelsize=14}${cpu cpu1}%${font}
@@ -55,7 +55,7 @@ ${goto 34}${font :style=Bold:pixelsize=12}CPU7${voffset -8} ${font Poky:pixelsiz
 ${voffset -20}${goto 246}${font :style=Bold:pixelsize=14}${cpu cpu7}%${font}
 ${goto 34}${font :style=Bold:pixelsize=12}CPU8${voffset -8} ${font Poky:pixelsize=22}P${font} ${voffset -5}${freq_g 8} GHz ${alignc}${voffset -15} ${cpugraph  cpu8 20,90 FFF6CD AC0F1C -t}
 ${voffset -20}${goto 246}${font :style=Bold:pixelsize=14}${cpu cpu8}%${font}
-${goto 34}${font :style=Bold:pixelsize=12}CPU TEMP: ${execpi 1 sensors | grep 'Package id 0' | cut -c 15-24} FAN: ${execpi 10 sensors | grep 'cpu_fan:' | cut -c 13-24} ${cpu cpu0}%${font} 
+${goto 34}${font :style=Bold:pixelsize=12}${texeci 1 redis-cli GET cpuInfo} ${cpu cpu0}%${font}
 
 ${voffset 16}${goto 41}${font :style=Bold:pixelsize=12}MEM${font}${voffset -19} ${font Poky:pixelsize=32}a${font}   ${voffset -22}  RAM: $mem v $memmax
 ${alignr 50}${color A0CCFF}   ${membar 4,180}${color}
@@ -72,17 +72,17 @@ ${goto 148}${voffset -6}${downspeedgraph wlo1 25,150 D9FFDF A5FEB3}
 ${goto 148}${voffset -4}Upload: ${upspeed wlo1}
 ${goto 148}${voffset -6}${upspeedgraph wlo1 25,150 FEC2A5 FA9C6F}
 ${goto 118}${font Poky:pixelsize=22}e${font}
-${goto 148}${voffset -26}Total:  down:${totaldown wlo1} 
+${goto 148}${voffset -26}Total:  down:${totaldown wlo1}
 ${goto 189}up:${totalup wlo1}
 
 ${goto 30}${font Poky:pixelsize=52}y${font}
-${voffset -40}${alignc}NVME: ${fs_free /} / ${fs_size /} 
-${goto 130}TEMP: ${execpi 13 sensors | grep 'Composite:' | cut -c 15-24}
+${voffset -40}${alignc}NVME: ${fs_free /} / ${fs_size /}
+${goto 130}${texeci 1 redis-cli GET hardInfo}
 ${alignc}${color 83A1FF}${fs_bar 4,150 /}${color}
 ${alignc}SmartBuy960: ${fs_free /mnt/smartbuy960} / ${fs_size /mnt/smartbuy960}
 ${alignc}${color 83A1FF}${fs_bar 4,150 /mnt/smartbuy960}${color}
 
 
 
-${texeci 300 cat ~/conky/gismeteo/nodejs/cashe/txtVis.txt}
-${image  ~/conky/gismeteo/nodejs/cashe/icon.png -p 174,700 -f 60}
+${texeci 3 redis-cli GET gisMeteoInfo}
+${image  ~/conky_gis/gismeteo/nodejs/cashe/icon.png -p 174,700 -f 60}

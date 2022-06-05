@@ -1,5 +1,10 @@
 const configs={
   gisToken:'',
-  counMSupd:590000
+  counMSupd:590000,
+  redis:{
+   port: process.env.CONKY_REDISPORT || 6379,
+   host: process.env.CONKY_REDISHOST || 'localhost',
+   expire: 1
+ }
 };
 module.exports = configs;

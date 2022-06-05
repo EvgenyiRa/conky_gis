@@ -1,0 +1,1 @@
+CPU TEMP: +43.0°C  FAN: 2500 RPM
