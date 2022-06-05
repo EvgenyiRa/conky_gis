@@ -1,0 +1,14 @@
+{
+  "name": "gismeteo_parse",
+  "version": "1.0.0",
+  "description": "parse api GisMeteo",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Evgenyi Rassadnikov",
+  "license": "MIT",
+  "dependencies": {
+    "sharp": "^0.30.6"
+  }
+}

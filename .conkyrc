@@ -1,0 +1,88 @@
+###############################
+### http://www.NoobsLab.com ###
+###############################
+background yes
+font Caliban:size=8
+xftfont Caliban:size=9
+use_xft yes
+xftalpha 0.5
+update_interval 1.0
+total_run_times 0
+own_window_class conky
+own_window yes
+own_window_type normal
+own_window_transparent no
+own_window_argb_visual yes
+own_window_argb_value 100
+double_buffer yes
+draw_shades yes
+draw_outline yes
+draw_borders no
+draw_graph_borders no
+minimum_size 350
+maximum_width 350
+default_color ffffff
+default_shade_color 000000
+draw_outline no
+alignment top_right
+gap_x 10
+gap_y 20
+no_buffers yes
+cpu_avg_samples 1
+override_utf8_locale yes
+uppercase no
+use_spacer none
+
+TEXT
+${image ~/.conky/icons/logo.png -p 18,0 -s 45x45}${goto 74}${font Poky:pixelsize=20}r${font} ${voffset -16} Kernel: $kernel $machine
+${goto 99}Uptime: $uptime_short 
+${goto 99}Users logon: $user_number
+${voffset -6}${goto 70}${font Poky:pixelsize=22}T${font}${color 98FB98}${voffset -8} ${battery_bar 6,150 BAT0}${color}  ${battery BAT0} 
+${voffset -8}
+${goto 34}${font :style=Bold:pixelsize=12}CPU1${voffset -8} ${font Poky:pixelsize=22}P${font} ${voffset -5}${freq_g 1} GHz ${alignc}${voffset -15} ${cpugraph  cpu1 20,90 FFF6CD AC0F1C -t}
+${voffset -20}${goto 246}${font :style=Bold:pixelsize=14}${cpu cpu1}%${font}
+${goto 34}${font :style=Bold:pixelsize=12}CPU2${voffset -8} ${font Poky:pixelsize=22}P${font} ${voffset -5}${freq_g 2} GHz ${alignc}${voffset -15} ${cpugraph  cpu2 20,90 FFF6CD AC0F1C -t}
+${voffset -20}${goto 246}${font :style=Bold:pixelsize=14}${cpu cpu2}%${font}
+${goto 34}${font :style=Bold:pixelsize=12}CPU3${voffset -8} ${font Poky:pixelsize=22}P${font} ${voffset -5}${freq_g 3} GHz ${alignc}${voffset -15} ${cpugraph  cpu3 20,90 FFF6CD AC0F1C -t}
+${voffset -20}${goto 246}${font :style=Bold:pixelsize=14}${cpu cpu3}%${font}
+${goto 34}${font :style=Bold:pixelsize=12}CPU4${voffset -8} ${font Poky:pixelsize=22}P${font} ${voffset -5}${freq_g 4} GHz ${alignc}${voffset -15} ${cpugraph  cpu4 20,90 FFF6CD AC0F1C -t}
+${voffset -20}${goto 246}${font :style=Bold:pixelsize=14}${cpu cpu4}%${font}
+${goto 34}${font :style=Bold:pixelsize=12}CPU5${voffset -8} ${font Poky:pixelsize=22}P${font} ${voffset -5}${freq_g 5} GHz ${alignc}${voffset -15} ${cpugraph  cpu5 20,90 FFF6CD AC0F1C -t}
+${voffset -20}${goto 246}${font :style=Bold:pixelsize=14}${cpu cpu5}%${font}
+${goto 34}${font :style=Bold:pixelsize=12}CPU6${voffset -8} ${font Poky:pixelsize=22}P${font} ${voffset -5}${freq_g 6} GHz ${alignc}${voffset -15} ${cpugraph  cpu6 20,90 FFF6CD AC0F1C -t}
+${voffset -20}${goto 246}${font :style=Bold:pixelsize=14}${cpu cpu6}%${font}
+${goto 34}${font :style=Bold:pixelsize=12}CPU7${voffset -8} ${font Poky:pixelsize=22}P${font} ${voffset -5}${freq_g 7} GHz ${alignc}${voffset -15} ${cpugraph  cpu7 20,90 FFF6CD AC0F1C -t}
+${voffset -20}${goto 246}${font :style=Bold:pixelsize=14}${cpu cpu7}%${font}
+${goto 34}${font :style=Bold:pixelsize=12}CPU8${voffset -8} ${font Poky:pixelsize=22}P${font} ${voffset -5}${freq_g 8} GHz ${alignc}${voffset -15} ${cpugraph  cpu8 20,90 FFF6CD AC0F1C -t}
+${voffset -20}${goto 246}${font :style=Bold:pixelsize=14}${cpu cpu8}%${font}
+${goto 34}${font :style=Bold:pixelsize=12}CPU TEMP: ${execpi 1 sensors | grep 'Package id 0' | cut -c 15-24} FAN: ${execpi 10 sensors | grep 'cpu_fan:' | cut -c 13-24} ${cpu cpu0}%${font} 
+
+${voffset 16}${goto 41}${font :style=Bold:pixelsize=12}MEM${font}${voffset -19} ${font Poky:pixelsize=32}a${font}   ${voffset -22}  RAM: $mem v $memmax
+${alignr 50}${color A0CCFF}   ${membar 4,180}${color}
+${goto 120} Swap: $swap v $swapmax
+${goto 120} Load: ${color C7FF8E}$loadavg${color}
+${goto 120} Processes: ${color C7FF8E}$processes${color}
+${goto 120} Running: $running_processes ${color}
+
+
+${voffset -8}${goto 33}${font :style=Bold:pixelsize=12}NET${font}${voffset -19} ${font Poky:pixelsize=32}w${font}
+
+${goto 118}${font Poky:pixelsize=22}i${font}${voffset -50} Download: ${downspeed wlo1}
+${goto 148}${voffset -6}${downspeedgraph wlo1 25,150 D9FFDF A5FEB3}
+${goto 148}${voffset -4}Upload: ${upspeed wlo1}
+${goto 148}${voffset -6}${upspeedgraph wlo1 25,150 FEC2A5 FA9C6F}
+${goto 118}${font Poky:pixelsize=22}e${font}
+${goto 148}${voffset -26}Total:  down:${totaldown wlo1} 
+${goto 189}up:${totalup wlo1}
+
+${goto 30}${font Poky:pixelsize=52}y${font}
+${voffset -40}${alignc}NVME: ${fs_free /} / ${fs_size /} 
+${goto 130}TEMP: ${execpi 13 sensors | grep 'Composite:' | cut -c 15-24}
+${alignc}${color 83A1FF}${fs_bar 4,150 /}${color}
+${alignc}SmartBuy960: ${fs_free /mnt/smartbuy960} / ${fs_size /mnt/smartbuy960}
+${alignc}${color 83A1FF}${fs_bar 4,150 /mnt/smartbuy960}${color}
+
+
+
+${texeci 300 cat ~/conky/gismeteo/nodejs/cashe/txtVis.txt}
+${image  ~/conky/gismeteo/nodejs/cashe/icon.png -p 174,700 -f 60}

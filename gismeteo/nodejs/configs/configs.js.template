@@ -1,0 +1,5 @@
+const configs={
+  gisToken:'',
+  counMSupd:590000
+};
+module.exports = configs;
