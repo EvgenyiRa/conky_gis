@@ -103,7 +103,6 @@ redis.client.connect().then(() => {
         }
         if (str.indexOf('cpu_fan:')>-1) {
           cpuInfo+=' FAN: '+str.substring(13,23);
-          break;
         }
       }
       //console.log('cpuInfo',cpuInfo);
