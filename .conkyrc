@@ -85,4 +85,4 @@ ${alignc}${color 83A1FF}${fs_bar 4,150 /mnt/smartbuy960}${color}
 
 
 ${texeci 3 redis-cli GET gisMeteoInfo}
-${image  ~/conky_gis/gismeteo/nodejs/cashe/icon.png -p 174,700 -f 60}
+${image  ~/conky_gis/gismeteo/nodejs/cashe/icon.png -p 213,700 -f 60}
