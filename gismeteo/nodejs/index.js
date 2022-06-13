@@ -2,7 +2,8 @@ const configs=require('./configs/configs.js'),
       fs = require('fs'),
       path = require('path'),
       redis=require('./services/redis.js'),
-      execSync = require('child_process').execSync;
+      execSync = require('child_process').execSync,
+      webSocketClient=require('./services/webSocketClient.js');
 
 /*конвертация svg to png
 const sharp = require("sharp")
@@ -26,7 +27,8 @@ for (var i=0; i<dirVal.length; i++) {
 }*/
 
 const setGisInfo=async ()=>{
-  const myIP=execSync("curl -s ifconfig.co").toString().slice(0, -1),
+  console.log('tut');
+  /*const myIP=execSync("curl -s ifconfig.co").toString().slice(0, -1),
         rExistsIP=await redis.client.exists('gisM_city_'+myIP);
   let myCityRes;
   if (rExistsIP===0) {
@@ -41,7 +43,7 @@ const setGisInfo=async ()=>{
   //console.log('myCityParse',myCityParse);
   //const myCityRes=`{"meta":{"message":"","code":"200"},"response":{"district":{"name":"Воронежская область","nameP":"в Воронежской области"},"id":5026,"sub_district":{"name":"Воронеж (городской округ)","nameP":"в Воронеже"},"url":"\/weather-voronezh-5026\/","nameP":"в Воронеже","name":"Воронеж","kind":"M","country":{"name":"Россия","code":"RU","nameP":"в России"}}}`;
   const gisRes=execSync("curl -s -H 'X-Gismeteo-Token: "+configs.gisToken+"' 'https://api.gismeteo.net/v2/weather/current/"+myCityParse.response.id+"/?lang=ru'").toString().slice(0, -1);
-  //console.log(gisRes);
+  console.log('gisRes',gisRes);
   //const gisRes=`{"meta":{"message":"","code":"200"},"response":{"precipitation":{"type_ext":null,"intensity":0,"correction":null,"amount":0,"duration":0,"type":0},"pressure":{"h_pa":997,"mm_hg_atm":748,"in_hg":39.3},"humidity":{"percent":86},"icon":"d","gm":3,"wind":{"direction":{"degree":310,"scale_8":8},"speed":{"km_h":4,"m_s":1,"mi_h":2}},"cloudiness":{"type":0,"percent":21},"date":{"UTC":"2022-06-05 07:00:00","local":"2022-06-05 10:00:00","time_zone_offset":180,"hr_to_forecast":null,"unix":1654412400},"radiation":{"uvb_index":null,"UVB":null},"city":4368,"kind":"Obs","storm":false,"temperature":{"comfort":{"C":13.5,"F":56.3},"water":{"C":14.5,"F":58.1},"air":{"C":13.5,"F":56.3}},"description":{"full":"Ясно"}}}`;
   //fs.writeFileSync("./cashe/gisRes.json", gisRes);
   const gisParse=JSON.parse(gisRes);
@@ -86,11 +88,14 @@ const setGisInfo=async ()=>{
   //fs.writeFileSync("./cashe/icon.txt", path.join(path.dirname(__dirname),'icons',gisParse.response.icon+'.png'));*/
 }
 
-redis.client.connect().then(() => {
-  setGisInfo();
-  const timerId = setInterval(()=> {
-      setGisInfo();
-  },configs.counMSupd);
+redis.client.connect().then(async () => {
+  const resWsCon=await webSocketClient.init();
+  if (resWsCon) {
+    setGisInfo();
+    const timerId = setInterval(()=> {
+        setGisInfo();
+    },configs.counMSupd);
+  }
 
   const timerId2 = setInterval(()=> {
       const sensorRes=execSync('sensors').toString().slice(0, -1).split(/\n/g);
