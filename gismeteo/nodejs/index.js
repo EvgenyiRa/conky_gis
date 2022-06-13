@@ -94,11 +94,11 @@ redis.client.connect().then(() => {
 
   const timerId2 = setInterval(()=> {
       const sensorRes=execSync('sensors').toString().slice(0, -1).split(/\n/g);
-      let cpuInfo='';
+      let cpuInfo='CPU ';
       for (var i = 0; i < sensorRes.length; i++) {
         const str=sensorRes[i];
         if (str.indexOf('Package id 0')>-1) {
-          cpuInfo+='CPU TEMP: '+str.substring(15,23);
+          cpuInfo+='TEMP: '+str.substring(15,23);
           //break;
         }
         if (str.indexOf('cpu_fan:')>-1) {
