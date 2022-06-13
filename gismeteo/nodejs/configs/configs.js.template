@@ -1,12 +1,32 @@
 const configs={
-  gisToken:'',
-  counMSupd:590000,
+  webServerConfigs:{
+    host: "127.0.0.1:8000",
+    protocol: 'http',
+    socketProtocol:'ws',
+    key:''
+  },
+  counMSupd:600000,
   //counMSupd:5000,
   redis:{
    port: process.env.CONKY_REDISPORT || 6379,
    host: process.env.CONKY_REDISHOST || 'localhost',
    expire: 1,
    expireForIP:43200
+ },
+ citys:{
+   vrn:{
+     code:5026,
+     name:'Воронеж'
+   }
  }
 };
+if (!!configs.webServerConfigs) {
+    configs.webServer=configs.webServerConfigs.protocol+'://'+configs.webServerConfigs.host;
+    configs.webSocketServer=configs.webServerConfigs.socketProtocol+'://'+configs.webServerConfigs.host+'/api';
+}
+else {
+    configs.webServer=undefined;
+    configs.webSocketServer=undefined;
+}
+configs.city=configs.citys['vrn'];
 module.exports = configs;

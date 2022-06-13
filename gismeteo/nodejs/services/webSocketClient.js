@@ -64,8 +64,9 @@ const init=()=> new Promise((resolve) => {
                           args:args
                         }));
                         connection.on('message', (event) => {
-                          const data = JSON.parse(event.data);
-                          resolve2(data);
+                          console.log('apiEvent',event);
+                          const result = JSON.parse(event.utf8Data);
+                          resolve2(result.data);
                         });
                       }
                       if ((wsStat.auth) & (wsStat.connect)) {
@@ -76,7 +77,13 @@ const init=()=> new Promise((resolve) => {
                             if (resWsCon) {
                                 getMethod();
                             }
+                            else {
+                                resolve2(false);
+                            }
                           })
+                      }
+                      else {
+                          resolve2(false);
                       }
                     });
                   };
