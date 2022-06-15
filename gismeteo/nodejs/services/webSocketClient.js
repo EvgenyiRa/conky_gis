@@ -63,7 +63,7 @@ const init=()=> new Promise((resolve) => {
                           method:method,
                           args:args
                         }));
-                        connection.on('message', (event) => {
+                        connection.once('message', (event) => {
                           //console.log('apiEvent',event);
                           const result = JSON.parse(event.utf8Data);
                           resolve2(result.data);
