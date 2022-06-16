@@ -6,15 +6,16 @@ const configs=require('../configs/configs.js'),
 console.log("Подключение к серверу "+configs.webServer+" по WebSocket");
 const connectionObj={};
 
-let wsClient,
-    wsStat={},
-    api={};
+let wsClient;
+const api={};
 
 const init=()=> new Promise((resolve) => {
   // Вешаем на него обработчик события подключения к серверу
-  wsStat.connect=false;
-  wsStat.auth=false;
-  wsStat.dataUpdate=false;
+  const wsStat={
+    connect:false,
+    auth:false,
+    dataUpdate:false
+  };
   wsClient = new WebSocketClient();
   wsClient.on('connect', wsHandler);
   function wsHandler(connection) {

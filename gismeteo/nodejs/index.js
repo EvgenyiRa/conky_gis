@@ -28,6 +28,7 @@ for (var i=0; i<dirVal.length; i++) {
 
 const setGisInfo=async ()=>{
   const gisParse=await webSocketClient.api.gisInfo(configs.city.code);
+  //console.log('gisParse',gisParse);
   /*const myIP=execSync("curl -s ifconfig.co").toString().slice(0, -1),
         rExistsIP=await redis.client.exists('gisM_city_'+myIP);
   let myCityRes;
@@ -81,8 +82,7 @@ const setGisInfo=async ()=>{
                spaces+'Данные получены с ресурса https://www.gismeteo.ru'
   //console.log('txtVis',txtVis);
   //fs.writeFileSync("./cashe/txtVis.txt", txtVis);
-  redis.client.set('gisMeteoInfo', txtVis);
-  redis.client.expire('gisMeteoInfo', (configs.counMSupd/1000+10));//установка времени действия кэша
+  redis.client.set('gisMeteoInfo', txtVis,'EX', (configs.counMSupd/500+30));
 
   execSync('cp -f "'+path.join(path.dirname(__dirname),'icons',gisParse.response.icon+'.png')+'" "'+path.join(__dirname,'cashe','icon.png')+'"');
   //fs.writeFileSync("./cashe/icon.txt", path.join(path.dirname(__dirname),'icons',gisParse.response.icon+'.png'));
@@ -111,8 +111,7 @@ redis.client.connect().then(async () => {
         }
       }
       //console.log('cpuInfo',cpuInfo);
-      redis.client.set('cpuInfo', cpuInfo);
-      redis.client.expire('cpuInfo', configs.redis.expire);//установка времени действия кэша
+      redis.client.set('cpuInfo', cpuInfo,'EX',configs.redis.expire );
       //fs.writeFileSync("./cashe/cpuInfo.txt", cpuInfo);
 
       let hardInfo='TEMP: ';
