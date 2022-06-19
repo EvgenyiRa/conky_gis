@@ -82,20 +82,22 @@ const setGisInfo=async ()=>{
                spaces+'Данные получены с ресурса https://www.gismeteo.ru'
   //console.log('txtVis',txtVis);
   //fs.writeFileSync("./cashe/txtVis.txt", txtVis);
-  redis.client.set('gisMeteoInfo', txtVis,'EX', (configs.counMSupd/500+30));
+  redis.client.set('gisMeteoInfo', txtVis,{EX:configs.counMSupd/500+30});
 
   execSync('cp -f "'+path.join(path.dirname(__dirname),'icons',gisParse.response.icon+'.png')+'" "'+path.join(__dirname,'cashe','icon.png')+'"');
   //fs.writeFileSync("./cashe/icon.txt", path.join(path.dirname(__dirname),'icons',gisParse.response.icon+'.png'));
 }
 
 redis.client.connect().then(async () => {
-  const resWsCon=await webSocketClient.init();
-  if (resWsCon) {
-    setGisInfo();
-    const timerId = setInterval(()=> {
-        setGisInfo();
-    },configs.counMSupd);
-  }
+  const timerId0 = setInterval(async ()=> {
+    const resWsCon=await webSocketClient.init();
+    if (resWsCon) {
+      const timerId = setInterval(()=> {
+          setGisInfo();
+      },configs.counMSupd);
+      clearInterval(timerId0);
+    }
+  },configs.counMSupd/2);
 
   const timerId2 = setInterval(()=> {
       const sensorRes=execSync('sensors').toString().slice(0, -1).split(/\n/g);
@@ -111,7 +113,7 @@ redis.client.connect().then(async () => {
         }
       }
       //console.log('cpuInfo',cpuInfo);
-      redis.client.set('cpuInfo', cpuInfo,'EX',configs.redis.expire );
+      redis.client.set('cpuInfo', cpuInfo,{EX:configs.redis.expire} );
       //fs.writeFileSync("./cashe/cpuInfo.txt", cpuInfo);
 
       let hardInfo='TEMP: ';
@@ -123,8 +125,7 @@ redis.client.connect().then(async () => {
         }
       }
       //fs.writeFileSync("./cashe/hardInfo.txt", hardInfo);
-      redis.client.set('hardInfo', hardInfo);
-      redis.client.expire('hardInfo', (configs.redis.expire+1));//установка времени действия кэша
+      redis.client.set('hardInfo', hardInfo,{EX:configs.redis.expire+1});
       //console.log('hardInfo',hardInfo);
   },configs.redis.expire);
 });
