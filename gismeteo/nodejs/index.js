@@ -92,6 +92,7 @@ redis.client.connect().then(async () => {
   const timerId0 = setInterval(async ()=> {
     const resWsCon=await webSocketClient.init();
     if (resWsCon) {
+      setGisInfo();
       const timerId = setInterval(()=> {
           setGisInfo();
       },configs.counMSupd);
