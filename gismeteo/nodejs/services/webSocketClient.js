@@ -71,7 +71,25 @@ const init=()=> new Promise((resolve) => {
                         });
                       }
                       if ((wsStat.auth) & (wsStat.connect)) {
-                          getMethod();
+                          if (!connection.connected) {
+                              setTimeout(function (){
+                                  if(!connection.connected){
+                                      wsStat.connect=false;
+                                      wsStat.auth=false;
+                                      wsClient.abort();
+                                      init().then((resWsCon) => {
+                                        if (resWsCon) {
+                                            getMethod();
+                                        }
+                                        else {
+                                            resolve2(false);
+                                        }
+                                      })
+                                  }
+                              },3000);
+                          } else {
+                              getMethod();
+                          }
                       }
                       else if (!wsStat.connect) {
                           init().then((resWsCon) => {
