@@ -3,10 +3,6 @@ const redis = require('redis'),
       redisConfig = configs.redis;
 const client = redis.createClient(redisConfig.port,redisConfig.host);
 
-client.connect().then(()=> {
-    console.log('Redis connected');
-});
-
 client.on('error', (err) => {
   console.log('Redis error', err)
 });
