@@ -70,7 +70,7 @@ const setGisInfo=async ()=>{
           7:'Западный',
           8:'Северо-западный'
         };
-  const spaces='       ',
+  const spaces='   ',
         txtVis=spaces+configs.city.name+'\n'+
                spaces+gisParse.response.description.full+'\n'+
                spaces+'Температура: '+gisParse.response.temperature.air.C+String.fromCharCode(176)+'\n'+
@@ -114,7 +114,7 @@ redis.client.connect().then(async () => {
         }
       }
       //console.log('cpuInfo',cpuInfo);
-      redis.client.set('cpuInfo', cpuInfo,{EX:configs.redis.expire} );
+      redis.client.set('cpuInfo', cpuInfo,{EX:configs.redis.expire+1} );
       //fs.writeFileSync("./cashe/cpuInfo.txt", cpuInfo);
 
       let hardInfo='TEMP: ';
@@ -127,6 +127,14 @@ redis.client.connect().then(async () => {
       }
       //fs.writeFileSync("./cashe/hardInfo.txt", hardInfo);
       redis.client.set('hardInfo', hardInfo,{EX:configs.redis.expire+1});
+
+      const cpusFreq=execSync('hwinfo --short --cpu').toString().slice(0, -1).split(/\n/g);
+      //console.log(cpusFreq);
+      for (let i = 1; i < cpusFreq.length; i++) {
+          const oneCpu=((+cpusFreq[i].substring(65,69))/1000).toFixed(2);
+          //console.log('oneCpu',oneCpu);
+          redis.client.set('conkyCpuFreq_'+i, oneCpu,{EX:configs.redis.expire+1});
+      }
       //console.log('hardInfo',hardInfo);
-  },configs.redis.expire);
+  },configs.redis.expire*1000);
 });
