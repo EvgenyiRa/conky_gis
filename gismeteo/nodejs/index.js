@@ -128,5 +128,5 @@ redis.client.connect().then(async () => {
       //fs.writeFileSync("./cashe/hardInfo.txt", hardInfo);
       redis.client.set('hardInfo', hardInfo,{EX:configs.redis.expire+1});
       //console.log('hardInfo',hardInfo);
-  },configs.redis.expire*1000);
+  },configs.redis.expire*900);
 });
