@@ -34,7 +34,7 @@ uppercase no
 use_spacer none
 
 TEXT
-${image ~/.conky/icons/logo.png -p 18,0 -s 45x45}${goto 74}${font Poky:pixelsize=20}r${font} ${voffset -16} Kernel: $kernel $machine
+${image ~/conky_gis/logo.png -p 18,0 -s 45x45}${goto 74}${font Poky:pixelsize=20}r${font} ${voffset -16} Kernel: $kernel $machine
 ${goto 99}Uptime: $uptime_short
 ${goto 99}Users logon: $user_number
 ${voffset -6}${goto 70}${font Poky:pixelsize=22}T${font}${color 98FB98}${voffset -8} ${battery_bar 6,150 BAT0}${color}  ${battery BAT0}
