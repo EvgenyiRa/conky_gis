@@ -114,7 +114,7 @@ redis.client.connect().then(async () => {
         }
       }
       //console.log('cpuInfo',cpuInfo);
-      redis.client.set('cpuInfo', cpuInfo,{EX:configs.redis.expire} );
+      redis.client.set('cpuInfo', cpuInfo,{EX:configs.redis.expire+1} );
       //fs.writeFileSync("./cashe/cpuInfo.txt", cpuInfo);
 
       let hardInfo='TEMP: ';
@@ -128,5 +128,5 @@ redis.client.connect().then(async () => {
       //fs.writeFileSync("./cashe/hardInfo.txt", hardInfo);
       redis.client.set('hardInfo', hardInfo,{EX:configs.redis.expire+1});
       //console.log('hardInfo',hardInfo);
-  },configs.redis.expire*900);
+  },configs.redis.expire*1000);
 });
