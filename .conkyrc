@@ -80,10 +80,15 @@ ${goto 30}${font Poky:pixelsize=52}y${font}
 ${voffset -40}${alignc}NVME: ${fs_free /} / ${fs_size /}
 ${goto 130}${texeci 1 redis-cli GET hardInfo}
 ${alignc}${color 83A1FF}${fs_bar 4,150 /}${color}
+
+${goto 30}Read ${diskio_read /dev/nvme0n1p2} ${goto 120} ${voffset -15} ${diskiograph_read /dev/nvme0n1p2 20,150 FFF6CD AC0F1C -t}
+${goto 30}Write ${diskio_write /dev/nvme0n1p2} ${goto 120} ${voffset -15} ${diskiograph_write /dev/nvme0n1p2 20,150 FFF6CD AC0F1C -t}
 ${alignc}SmartBuy: ${fs_free /media/rassadnikov_e/Новый том} / ${fs_size /media/rassadnikov_e/Новый том}
 ${alignc}${color 83A1FF}${fs_bar 4,150 /media/rassadnikov_e/Новый том}${color}
 
+${goto 30}Read ${diskio_read /dev/sda1} ${goto 120} ${voffset -15} ${diskiograph_read /dev/sda1 20,150 FFF6CD AC0F1C -t}
+${goto 30}Write ${diskio_write /dev/sda1} ${goto 120} ${voffset -15} ${diskiograph_write /dev/sda1 20,150 FFF6CD AC0F1C -t}
 
 
 ${texeci 13 redis-cli GET gisMeteoInfo}
-${image  ~/conky_gis/gismeteo/nodejs/cashe/icon.png -p 223,590 -f 60}
+${image  ~/conky_gis/gismeteo/nodejs/cashe/icon.png -p 223,675 -f 60}
