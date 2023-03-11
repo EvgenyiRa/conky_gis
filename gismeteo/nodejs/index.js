@@ -90,13 +90,15 @@ const setGisInfo=async ()=>{
 
 redis.client.connect().then(async () => {
   const timerId0 = setInterval(async ()=> {
-    const resWsCon=await webSocketClient.init();
-    if (resWsCon) {
-      setGisInfo();
-      const timerId = setInterval(()=> {
-          setGisInfo();
-      },configs.counMSupd);
-      clearInterval(timerId0);
+    if (!!configs.webServerConfigs) {
+      const resWsCon=await webSocketClient.init();
+      if (resWsCon) {
+        setGisInfo();
+        const timerId = setInterval(()=> {
+            setGisInfo();
+        },configs.counMSupd);
+        clearInterval(timerId0);
+      }
     }
   },configs.counMSupd/2);
 
@@ -105,13 +107,13 @@ redis.client.connect().then(async () => {
       let cpuInfo='CPU';
       for (var i = 0; i < sensorRes.length; i++) {
         const str=sensorRes[i];
-        if (str.indexOf('Package id 0')>-1) {
+        if (str.indexOf('Tctl:')>-1) {
           cpuInfo+=' TEMP: '+str.substring(15,23);
           //break;
         }
-        if (str.indexOf('cpu_fan:')>-1) {
+        /*if (str.indexOf('cpu_fan:')>-1) {
           cpuInfo+=' FAN: '+str.substring(13,23);
-        }
+        }*/
       }
       //console.log('cpuInfo',cpuInfo);
       redis.client.set('cpuInfo', cpuInfo,{EX:configs.redis.expire+1} );

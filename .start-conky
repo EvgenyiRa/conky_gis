@@ -1,4 +1,3 @@
 #!/bin/sh
-sleep 20;
-cd ~/conky_gis/gismeteo/nodejs
-exec node . & conky -d -c ~/conky_gis/.conkyrc & exit
+sleep 1;
+exec node ~/conky_gis/gismeteo/nodejs/index.js & conky -d -c ~/conky_gis/.conkyrc & exit
