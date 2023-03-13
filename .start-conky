@@ -1,3 +1,11 @@
 #!/bin/sh
-sleep 1;
-exec node ~/conky_gis/gismeteo/nodejs/index.js & conky -d -c ~/conky_gis/.conkyrc & exit
+sleep 5
+cd ~/conky_gis/gismeteo/nodejs
+p=`pgrep conky`
+if [ "$p" == "" ];then
+    echo "no conky"
+    exec node ~/conky_gis/gismeteo/nodejs/index.js & conky -d -c ~/conky_gis/.conkyrc & exit
+else 
+    echo "exist conky"
+    exec node ~/conky_gis/gismeteo/nodejs/index.js & exit
+fi
