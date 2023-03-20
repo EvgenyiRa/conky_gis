@@ -105,21 +105,22 @@ redis.client.connect().then(async () => {
   const timerId2 = setInterval(()=> {
       const sensorRes=execSync('sensors').toString().slice(0, -1).split(/\n/g);
       let cpuInfo='CPU';
-      for (var i = 0; i < sensorRes.length; i++) {
+      /*for (var i = 0; i < sensorRes.length; i++) {
         const str=sensorRes[i];
-        if (str.indexOf('Tctl:')>-1) {
+        if (str.indexOf('temp1:')>-1) {
           cpuInfo+=' TEMP: '+str.substring(15,23);
-          //break;
+          break;
         }
-        /*if (str.indexOf('cpu_fan:')>-1) {
+        if (str.indexOf('cpu_fan:')>-1) {
           cpuInfo+=' FAN: '+str.substring(13,23);
-        }*/
-      }
+        }
+      }*/
+      cpuInfo+=' TEMP: '+sensorRes[10].substring(14,23);
       //console.log('cpuInfo',cpuInfo);
       redis.client.set('cpuInfo', cpuInfo,{EX:configs.redis.expire+1} );
       //fs.writeFileSync("./cashe/cpuInfo.txt", cpuInfo);
 
-      let hardInfo='TEMP: ';
+      /*let hardInfo='TEMP: ';
       for (var i = 0; i < sensorRes.length; i++) {
         const str=sensorRes[i];
         if (str.indexOf('Composite:')>-1) {
@@ -128,7 +129,7 @@ redis.client.connect().then(async () => {
         }
       }
       //fs.writeFileSync("./cashe/hardInfo.txt", hardInfo);
-      redis.client.set('hardInfo', hardInfo,{EX:configs.redis.expire+1});
+      redis.client.set('hardInfo', hardInfo,{EX:configs.redis.expire+1});*/
       //console.log('hardInfo',hardInfo);
   },configs.redis.expire*1000);
 });
