@@ -55,6 +55,22 @@ ${goto 34}${font :style=Bold:pixelsize=12}CPU7${voffset -8} ${font Poky:pixelsiz
 ${voffset -20}${goto 246}${font :style=Bold:pixelsize=14}${cpu cpu7}%${font}
 ${goto 34}${font :style=Bold:pixelsize=12}CPU8${voffset -8} ${font Poky:pixelsize=22}P${font} ${voffset -5}${freq_g 8} GHz ${alignc}${voffset -15} ${cpugraph  cpu8 20,90 FFF6CD AC0F1C -t}
 ${voffset -20}${goto 246}${font :style=Bold:pixelsize=14}${cpu cpu8}%${font}
+${goto 34}${font :style=Bold:pixelsize=12}CPU9${voffset -8} ${font Poky:pixelsize=22}P${font} ${voffset -5}${freq_g 9} GHz ${alignc}${voffset -15} ${cpugraph  cpu9 20,90 FFF6CD AC0F1C -t}
+${voffset -20}${goto 246}${font :style=Bold:pixelsize=14}${cpu cpu9}%${font}
+${goto 34}${font :style=Bold:pixelsize=12}CPU10${voffset -8} ${font Poky:pixelsize=22}P${font} ${voffset -5}${freq_g 10} GHz ${alignc}${voffset -15} ${cpugraph  cpu10 20,90 FFF6CD AC0F1C -t}
+${voffset -20}${goto 246}${font :style=Bold:pixelsize=14}${cpu cpu10}%${font}
+${goto 34}${font :style=Bold:pixelsize=12}CPU11${voffset -8} ${font Poky:pixelsize=22}P${font} ${voffset -5}${freq_g 11} GHz ${alignc}${voffset -15} ${cpugraph  cpu11 20,90 FFF6CD AC0F1C -t}
+${voffset -20}${goto 246}${font :style=Bold:pixelsize=14}${cpu cpu11}%${font}
+${goto 34}${font :style=Bold:pixelsize=12}CPU12${voffset -8} ${font Poky:pixelsize=22}P${font} ${voffset -5}${freq_g 12} GHz ${alignc}${voffset -15} ${cpugraph  cpu12 20,90 FFF6CD AC0F1C -t}
+${voffset -20}${goto 246}${font :style=Bold:pixelsize=14}${cpu cpu12}%${font}
+${goto 34}${font :style=Bold:pixelsize=12}CPU13${voffset -8} ${font Poky:pixelsize=22}P${font} ${voffset -5}${freq_g 13} GHz ${alignc}${voffset -15} ${cpugraph  cpu13 20,90 FFF6CD AC0F1C -t}
+${voffset -20}${goto 246}${font :style=Bold:pixelsize=14}${cpu cpu13}%${font}
+${goto 34}${font :style=Bold:pixelsize=12}CPU14${voffset -8} ${font Poky:pixelsize=22}P${font} ${voffset -5}${freq_g 14} GHz ${alignc}${voffset -15} ${cpugraph  cpu14 20,90 FFF6CD AC0F1C -t}
+${voffset -20}${goto 246}${font :style=Bold:pixelsize=14}${cpu cpu14}%${font}
+${goto 34}${font :style=Bold:pixelsize=12}CPU15${voffset -8} ${font Poky:pixelsize=22}P${font} ${voffset -5}${freq_g 15} GHz ${alignc}${voffset -15} ${cpugraph  cpu15 20,90 FFF6CD AC0F1C -t}
+${voffset -20}${goto 246}${font :style=Bold:pixelsize=14}${cpu cpu15}%${font}
+${goto 34}${font :style=Bold:pixelsize=12}CPU16${voffset -8} ${font Poky:pixelsize=22}P${font} ${voffset -5}${freq_g 16} GHz ${alignc}${voffset -15} ${cpugraph  cpu16 20,90 FFF6CD AC0F1C -t}
+${voffset -20}${goto 246}${font :style=Bold:pixelsize=14}${cpu cpu16}%${font}
 ${goto 34}${font :style=Bold:pixelsize=12}${texeci 1 redis-cli GET cpuInfo} ${cpu cpu0}%${font}
 
 ${voffset 16}${goto 41}${font :style=Bold:pixelsize=12}MEM${font}${voffset -19} ${font Poky:pixelsize=32}a${font}   ${voffset -22}  RAM: $mem v $memmax
@@ -79,10 +95,8 @@ ${goto 30}${font Poky:pixelsize=52}y${font}
 ${voffset -40}${alignc}NVME: ${fs_free /} / ${fs_size /}
 ${goto 130}${texeci 1 redis-cli GET hardInfo}
 ${alignc}${color 83A1FF}${fs_bar 4,150 /}${color}
-${alignc}SmartBuy960: ${fs_free /mnt/smartbuy960} / ${fs_size /mnt/smartbuy960}
-${alignc}${color 83A1FF}${fs_bar 4,150 /mnt/smartbuy960}${color}
-
-
+${alignc}Data: ${fs_free /media/ra/Data} / ${fs_size /mnt//media/ra/Data}
+${alignc}${color 83A1FF}${fs_bar 4,150 /mnt//media/ra/Data}${color}
 
 ${texeci 13 redis-cli GET gisMeteoInfo}
-${image  ~/conky_gis/gismeteo/nodejs/cashe/icon.png -p 213,700 -f 60}
+${image  ~/conky_gis/gismeteo/nodejs/cashe/icon.png -p 213,830 -f 60}
