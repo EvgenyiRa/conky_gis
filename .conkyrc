@@ -39,39 +39,40 @@ ${goto 99}Uptime: $uptime_short
 ${goto 99}Users logon: $user_number
 ${voffset -6}${goto 70}${font Poky:pixelsize=22}T${font}${color 98FB98}${voffset -8} ${battery_bar 6,150 BAT0}${color}  ${battery BAT0}
 ${voffset -8}
-${goto 34}${font :style=Bold:pixelsize=12}CPU1${voffset -8} ${font Poky:pixelsize=22}P${font} ${voffset -5}${freq_g 1} GHz ${alignc}${voffset -15} ${cpugraph  cpu1 20,90 FFF6CD AC0F1C -t}
-${voffset -20}${goto 246}${font :style=Bold:pixelsize=14}${cpu cpu1}%${font}
-${goto 34}${font :style=Bold:pixelsize=12}CPU2${voffset -8} ${font Poky:pixelsize=22}P${font} ${voffset -5}${freq_g 2} GHz ${alignc}${voffset -15} ${cpugraph  cpu2 20,90 FFF6CD AC0F1C -t}
-${voffset -20}${goto 246}${font :style=Bold:pixelsize=14}${cpu cpu2}%${font}
-${goto 34}${font :style=Bold:pixelsize=12}CPU3${voffset -8} ${font Poky:pixelsize=22}P${font} ${voffset -5}${freq_g 3} GHz ${alignc}${voffset -15} ${cpugraph  cpu3 20,90 FFF6CD AC0F1C -t}
-${voffset -20}${goto 246}${font :style=Bold:pixelsize=14}${cpu cpu3}%${font}
-${goto 34}${font :style=Bold:pixelsize=12}CPU4${voffset -8} ${font Poky:pixelsize=22}P${font} ${voffset -5}${freq_g 4} GHz ${alignc}${voffset -15} ${cpugraph  cpu4 20,90 FFF6CD AC0F1C -t}
-${voffset -20}${goto 246}${font :style=Bold:pixelsize=14}${cpu cpu4}%${font}
-${goto 34}${font :style=Bold:pixelsize=12}CPU5${voffset -8} ${font Poky:pixelsize=22}P${font} ${voffset -5}${freq_g 5} GHz ${alignc}${voffset -15} ${cpugraph  cpu5 20,90 FFF6CD AC0F1C -t}
-${voffset -20}${goto 246}${font :style=Bold:pixelsize=14}${cpu cpu5}%${font}
-${goto 34}${font :style=Bold:pixelsize=12}CPU6${voffset -8} ${font Poky:pixelsize=22}P${font} ${voffset -5}${freq_g 6} GHz ${alignc}${voffset -15} ${cpugraph  cpu6 20,90 FFF6CD AC0F1C -t}
-${voffset -20}${goto 246}${font :style=Bold:pixelsize=14}${cpu cpu6}%${font}
-${goto 34}${font :style=Bold:pixelsize=12}CPU7${voffset -8} ${font Poky:pixelsize=22}P${font} ${voffset -5}${freq_g 7} GHz ${alignc}${voffset -15} ${cpugraph  cpu7 20,90 FFF6CD AC0F1C -t}
-${voffset -20}${goto 246}${font :style=Bold:pixelsize=14}${cpu cpu7}%${font}
-${goto 34}${font :style=Bold:pixelsize=12}CPU8${voffset -8} ${font Poky:pixelsize=22}P${font} ${voffset -5}${freq_g 8} GHz ${alignc}${voffset -15} ${cpugraph  cpu8 20,90 FFF6CD AC0F1C -t}
-${voffset -20}${goto 246}${font :style=Bold:pixelsize=14}${cpu cpu8}%${font}
-${goto 34}${font :style=Bold:pixelsize=12}CPU9${voffset -8} ${font Poky:pixelsize=22}P${font} ${voffset -5}${freq_g 9} GHz ${alignc}${voffset -15} ${cpugraph  cpu9 20,90 FFF6CD AC0F1C -t}
-${voffset -20}${goto 246}${font :style=Bold:pixelsize=14}${cpu cpu9}%${font}
-${goto 34}${font :style=Bold:pixelsize=12}CPU10${voffset -8} ${font Poky:pixelsize=22}P${font} ${voffset -5}${freq_g 10} GHz ${alignc}${voffset -15} ${cpugraph  cpu10 20,90 FFF6CD AC0F1C -t}
-${voffset -20}${goto 246}${font :style=Bold:pixelsize=14}${cpu cpu10}%${font}
-${goto 34}${font :style=Bold:pixelsize=12}CPU11${voffset -8} ${font Poky:pixelsize=22}P${font} ${voffset -5}${freq_g 11} GHz ${alignc}${voffset -15} ${cpugraph  cpu11 20,90 FFF6CD AC0F1C -t}
-${voffset -20}${goto 246}${font :style=Bold:pixelsize=14}${cpu cpu11}%${font}
-${goto 34}${font :style=Bold:pixelsize=12}CPU12${voffset -8} ${font Poky:pixelsize=22}P${font} ${voffset -5}${freq_g 12} GHz ${alignc}${voffset -15} ${cpugraph  cpu12 20,90 FFF6CD AC0F1C -t}
-${voffset -20}${goto 246}${font :style=Bold:pixelsize=14}${cpu cpu12}%${font}
-${goto 34}${font :style=Bold:pixelsize=12}CPU13${voffset -8} ${font Poky:pixelsize=22}P${font} ${voffset -5}${freq_g 13} GHz ${alignc}${voffset -15} ${cpugraph  cpu13 20,90 FFF6CD AC0F1C -t}
-${voffset -20}${goto 246}${font :style=Bold:pixelsize=14}${cpu cpu13}%${font}
-${goto 34}${font :style=Bold:pixelsize=12}CPU14${voffset -8} ${font Poky:pixelsize=22}P${font} ${voffset -5}${freq_g 14} GHz ${alignc}${voffset -15} ${cpugraph  cpu14 20,90 FFF6CD AC0F1C -t}
-${voffset -20}${goto 246}${font :style=Bold:pixelsize=14}${cpu cpu14}%${font}
-${goto 34}${font :style=Bold:pixelsize=12}CPU15${voffset -8} ${font Poky:pixelsize=22}P${font} ${voffset -5}${freq_g 15} GHz ${alignc}${voffset -15} ${cpugraph  cpu15 20,90 FFF6CD AC0F1C -t}
-${voffset -20}${goto 246}${font :style=Bold:pixelsize=14}${cpu cpu15}%${font}
-${goto 34}${font :style=Bold:pixelsize=12}CPU16${voffset -8} ${font Poky:pixelsize=22}P${font} ${voffset -5}${freq_g 16} GHz ${alignc}${voffset -15} ${cpugraph  cpu16 20,90 FFF6CD AC0F1C -t}
-${voffset -20}${goto 246}${font :style=Bold:pixelsize=14}${cpu cpu16}%${font}
-${goto 34}${font :style=Bold:pixelsize=12}${texeci 1 redis-cli GET cpuInfo} ${cpu cpu0}%${font}
+${goto 34}${font :style=Bold:pixelsize=12}CPU1${voffset -8} ${font Poky:pixelsize=22}P${font} ${voffset -5}${freq_g 1} GHz ${alignc}${voffset -15} ${cpugraph  cpu1 20,130 FFF6CD AC0F1C -t}
+${voffset -20}${goto 286}${font :style=Bold:pixelsize=14}${cpu cpu1}%${font}
+${goto 34}${font :style=Bold:pixelsize=12}CPU2${voffset -8} ${font Poky:pixelsize=22}P${font} ${voffset -5}${freq_g 2} GHz ${alignc}${voffset -15} ${cpugraph  cpu2 20,130 FFF6CD AC0F1C -t}
+${voffset -20}${goto 286}${font :style=Bold:pixelsize=14}${cpu cpu2}%${font}
+${goto 34}${font :style=Bold:pixelsize=12}CPU3${voffset -8} ${font Poky:pixelsize=22}P${font} ${voffset -5}${freq_g 3} GHz ${alignc}${voffset -15} ${cpugraph  cpu3 20,130 FFF6CD AC0F1C -t}
+${voffset -20}${goto 286}${font :style=Bold:pixelsize=14}${cpu cpu3}%${font}
+${goto 34}${font :style=Bold:pixelsize=12}CPU4${voffset -8} ${font Poky:pixelsize=22}P${font} ${voffset -5}${freq_g 4} GHz ${alignc}${voffset -15} ${cpugraph  cpu4 20,130 FFF6CD AC0F1C -t}
+${voffset -20}${goto 286}${font :style=Bold:pixelsize=14}${cpu cpu4}%${font}
+${goto 34}${font :style=Bold:pixelsize=12}CPU5${voffset -8} ${font Poky:pixelsize=22}P${font} ${voffset -5}${freq_g 5} GHz ${alignc}${voffset -15} ${cpugraph  cpu5 20,130 FFF6CD AC0F1C -t}
+${voffset -20}${goto 286}${font :style=Bold:pixelsize=14}${cpu cpu5}%${font}
+${goto 34}${font :style=Bold:pixelsize=12}CPU6${voffset -8} ${font Poky:pixelsize=22}P${font} ${voffset -5}${freq_g 6} GHz ${alignc}${voffset -15} ${cpugraph  cpu6 20,130 FFF6CD AC0F1C -t}
+${voffset -20}${goto 286}${font :style=Bold:pixelsize=14}${cpu cpu6}%${font}
+${goto 34}${font :style=Bold:pixelsize=12}CPU7${voffset -8} ${font Poky:pixelsize=22}P${font} ${voffset -5}${freq_g 7} GHz ${alignc}${voffset -15} ${cpugraph  cpu7 20,130 FFF6CD AC0F1C -t}
+${voffset -20}${goto 286}${font :style=Bold:pixelsize=14}${cpu cpu7}%${font}
+${goto 34}${font :style=Bold:pixelsize=12}CPU8${voffset -8} ${font Poky:pixelsize=22}P${font} ${voffset -5}${freq_g 8} GHz ${alignc}${voffset -15} ${cpugraph  cpu8 20,130 FFF6CD AC0F1C -t}
+${voffset -20}${goto 286}${font :style=Bold:pixelsize=14}${cpu cpu8}%${font}
+${goto 34}${font :style=Bold:pixelsize=12}CPU9${voffset -8} ${font Poky:pixelsize=22}P${font} ${voffset -5}${freq_g 9} GHz ${alignc}${voffset -15} ${cpugraph  cpu9 20,130 FFF6CD AC0F1C -t}
+${voffset -20}${goto 286}${font :style=Bold:pixelsize=14}${cpu cpu9}%${font}
+${goto 27}${font :style=Bold:pixelsize=12}CPU10${voffset -8} ${font Poky:pixelsize=22}P${font} ${voffset -5}${freq_g 10} GHz ${alignc}${voffset -15} ${cpugraph  cpu10 20,130 FFF6CD AC0F1C -t}
+${voffset -20}${goto 286}${font :style=Bold:pixelsize=14}${cpu cpu10}%${font}
+${goto 27}${font :style=Bold:pixelsize=12}CPU11${voffset -8} ${font Poky:pixelsize=22}P${font} ${voffset -5}${freq_g 11} GHz ${alignc}${voffset -15} ${cpugraph  cpu11 20,130 FFF6CD AC0F1C -t}
+${voffset -20}${goto 286}${font :style=Bold:pixelsize=14}${cpu cpu11}%${font}
+${goto 27}${font :style=Bold:pixelsize=12}CPU12${voffset -8} ${font Poky:pixelsize=22}P${font} ${voffset -5}${freq_g 12} GHz ${alignc}${voffset -15} ${cpugraph  cpu12 20,130 FFF6CD AC0F1C -t}
+${voffset -20}${goto 286}${font :style=Bold:pixelsize=14}${cpu cpu12}%${font}
+${goto 27}${font :style=Bold:pixelsize=12}CPU13${voffset -8} ${font Poky:pixelsize=22}P${font} ${voffset -5}${freq_g 13} GHz ${alignc}${voffset -15} ${cpugraph  cpu13 20,130 FFF6CD AC0F1C -t}
+${voffset -20}${goto 286}${font :style=Bold:pixelsize=14}${cpu cpu13}%${font}
+${goto 27}${font :style=Bold:pixelsize=12}CPU14${voffset -8} ${font Poky:pixelsize=22}P${font} ${voffset -5}${freq_g 14} GHz ${alignc}${voffset -15} ${cpugraph  cpu14 20,130 FFF6CD AC0F1C -t}
+${voffset -20}${goto 286}${font :style=Bold:pixelsize=14}${cpu cpu14}%${font}
+${goto 27}${font :style=Bold:pixelsize=12}CPU15${voffset -8} ${font Poky:pixelsize=22}P${font} ${voffset -5}${freq_g 15} GHz ${alignc}${voffset -15} ${cpugraph  cpu15 20,130 FFF6CD AC0F1C -t}
+${voffset -20}${goto 286}${font :style=Bold:pixelsize=14}${cpu cpu15}%${font}
+${goto 27}${font :style=Bold:pixelsize=12}CPU16${voffset -8} ${font Poky:pixelsize=22}P${font} ${voffset -5}${freq_g 16} GHz ${alignc}${voffset -15} ${cpugraph  cpu16 20,130 FFF6CD AC0F1C -t}
+${voffset -20}${goto 286}${font :style=Bold:pixelsize=14}${cpu cpu16}%${font}
+${goto 27}${font :style=Bold:pixelsize=12}${texeci 1 redis-cli GET cpuInfo} ${alignc}${voffset -15} ${cpugraph  cpu0 20,130 FFF6CD AC0F1C -t} 
+${voffset -20}${goto 286}${font :style=Bold:pixelsize=14}${cpu cpu0}%${font}
 
 ${voffset 16}${goto 41}${font :style=Bold:pixelsize=12}MEM${font}${voffset -19} ${font Poky:pixelsize=32}a${font}   ${voffset -22}  RAM: $mem v $memmax
 ${alignr 50}${color A0CCFF}   ${membar 4,180}${color}
