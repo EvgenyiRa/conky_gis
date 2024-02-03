@@ -115,21 +115,23 @@ redis.client.connect().then(async () => {
           cpuInfo+=' FAN: '+str.substring(13,23);
         }
       }*/
-      cpuInfo+=' TEMP: '+sensorRes[10].substring(14,23);
+      //console.log('sensorRes[18]',sensorRes[18]);
+      cpuInfo+=' TEMP: '+sensorRes[18].substring(14,23);
       //console.log('cpuInfo',cpuInfo);
       redis.client.set('cpuInfo', cpuInfo,{EX:configs.redis.expire+1} );
       //fs.writeFileSync("./cashe/cpuInfo.txt", cpuInfo);
 
-      /*let hardInfo='TEMP: ';
-      for (var i = 0; i < sensorRes.length; i++) {
+      let hardInfo='TEMP: ';
+      /*for (var i = 0; i < sensorRes.length; i++) {
         const str=sensorRes[i];
         if (str.indexOf('Composite:')>-1) {
           hardInfo+=str.substring(15,23);
           break;
         }
-      }
-      //fs.writeFileSync("./cashe/hardInfo.txt", hardInfo);
-      redis.client.set('hardInfo', hardInfo,{EX:configs.redis.expire+1});*/
+      }*/
+      hardInfo+=sensorRes[6].substring(14,23);
+      //fs.writeFileSync("./cashe/hardInfo.txt", hardInfo);*/
+      redis.client.set('hardInfo', hardInfo,{EX:configs.redis.expire+1});
       //console.log('hardInfo',hardInfo);
   },configs.redis.expire*1000);
 });
